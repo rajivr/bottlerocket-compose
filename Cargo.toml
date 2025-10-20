@@ -1,0 +1,19 @@
+[workspace]
+resolver = "1"
+members = [
+    "packages/compose-containers",
+    "packages/docker-compose",
+    "packages/settings-defaults",
+    "packages/settings-plugins",
+
+    "variants/aws-compose",
+    "variants/aws-dev",
+    "variants/metal-dev",
+]
+
+[profile.dev]
+debug = false
+opt-level = 'z'
+
+[profile.dev.build-override]
+opt-level = 'z'

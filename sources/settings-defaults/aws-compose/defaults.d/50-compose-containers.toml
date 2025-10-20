@@ -1,0 +1,12 @@
+# Compose Containers
+
+[services.compose-containers]
+configuration-files = ["compose-containers-toml"]
+restart-commands = ["/usr/bin/compose-containers"]
+
+[configuration-files.compose-containers-toml]
+path = "/etc/compose-containers/compose-containers.toml"
+template-path = "/usr/share/templates/compose-containers-toml"
+
+[metadata.settings.compose-containers]
+affected-services = ["compose-containers"]

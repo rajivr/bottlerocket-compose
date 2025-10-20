@@ -1,0 +1,17 @@
+[package]
+name = "docker-compose"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/docker/compose/releases"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/docker/compose/archive/v2.40.1/compose-2.40.1.tar.gz"
+sha512 = "02c1b567d9dfe28cb9c16d60ebe2c930ee58d6d34fc405afc9a6fa58c58814e70e4681728c8c3bd9c2e5832cf8fd5d50f57c0cbb4c2385eac67f14909793575f"
+bundle-modules = [ "go" ]

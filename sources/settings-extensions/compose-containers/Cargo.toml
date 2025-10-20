@@ -1,0 +1,14 @@
+[package]
+name = "settings-extension-compose-containers"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0 OR MIT"
+publish = false
+
+[dependencies]
+bottlerocket-modeled-types.workspace = true
+bottlerocket-model-derive.workspace = true
+bottlerocket-settings-sdk.workspace = true
+env_logger.workspace = true
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
