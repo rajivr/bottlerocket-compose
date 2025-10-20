@@ -1,0 +1,3 @@
+[settings.kubernetes]
+shutdown-grace-period = "150s"
+shutdown-grace-period-for-critical-pods = "30s"

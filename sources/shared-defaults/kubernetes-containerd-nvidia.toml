@@ -1,0 +1,30 @@
+[configuration-files.containerd-config-toml]
+# No override to path
+template-path = "/usr/share/templates/containerd-config-toml_k8s_nvidia_containerd_sock"
+
+# Image registries
+[metadata.settings.container-registry]
+affected-services = ["containerd", "host-containers", "bootstrap-containers", "soci-snapshotter"]
+
+[configuration-files.snapshotter-toml]
+path = "/etc/containerd/config.d/001-snapshotter.toml"
+template-path = "/usr/share/templates/snapshotter-toml"
+overwrite-path-if-present = false
+
+# Container runtime - soci.
+[services.soci-snapshotter]
+configuration-files = ["soci-config-toml"]
+restart-commands = ["/bin/systemctl try-restart soci-snapshotter.service"]
+
+[configuration-files.soci-config-toml]
+path = "/etc/soci-snapshotter/config.toml"
+template-path = "/usr/share/templates/soci-config-toml"
+
+[configuration-files.selected-snapshotter]
+path = "/etc/containerd/selected-snapshotter"
+template-path = "/usr/share/templates/selected-snapshotter"
+
+# Container runtime plugins settings.
+
+[metadata.settings.container-runtime-plugins.soci-snapshotter]
+affected-services = ["soci-snapshotter"]

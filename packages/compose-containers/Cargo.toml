@@ -1,0 +1,21 @@
+[package]
+name = "compose-containers"
+version = "0.1.0"
+license = "Apache-2.0 OR MIT"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+source-groups = [
+    "compose-containers"
+]
+
+# RPM BuildRequires
+[build-dependencies]
+
+# RPM Requires
+[dependencies]
