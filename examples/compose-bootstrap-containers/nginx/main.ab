@@ -1,0 +1,22 @@
+import { dir_exists, dir_create } from "std/fs"
+
+main {
+    const compose_directory = "/.bottlerocket/rootfs/local/compose-containers"
+
+    // ensure that `/local/compose-containers` directory is present,
+    // otherwise we might be using a non-compose variant of 
+    // bottlerocket.
+    if not dir_exists(compose_directory) {
+        exit 1
+    }
+
+    // create the required directory.
+    if not dir_exists("{compose_directory}/nginx") {
+        dir_create("{compose_directory}/nginx")
+    }
+
+    // copy the required files.
+    $ cp nginx/compose.yml {compose_directory}/nginx $?
+
+    exit 0
+}
