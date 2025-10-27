@@ -1,0 +1,6 @@
+name: nginx
+services:
+  nginx:
+    image: public.ecr.aws/nginx/nginx:alpine-slim
+    ports:
+      - "8080:80/tcp"
