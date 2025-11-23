@@ -1,0 +1,14 @@
+backend_aws_s3_region = "us-east-2"
+
+# `openssl rand -hex 5`
+backend_aws_s3_state_bucket = "bottlerocket-opentofu-XXXXXXXXXX"
+
+backend_aws_s3_state_bucket_role_suffix = "bottlerocket-image-developer"
+
+backend_aws_s3_allowed_account_ids = ["XXXXXXXXXXXX"]
+
+provider_aws_region = "us-east-2"
+
+provider_aws_allowed_account_ids = ["XXXXXXXXXXXX"]
+
+remote_state_administrator_role_bucket = "bottlerocket-opentofu-XXXXXXXXXX-administrator"
