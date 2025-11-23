@@ -1,0 +1,7 @@
+[settings.compose-containers.nginx]
+enabled = true
+
+[settings.bootstrap-containers.compose-bootstrap-nginx]
+mode = "always"
+source = "xxxxxxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/compose-bootstrap-nginx:latest@sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+essential = true
