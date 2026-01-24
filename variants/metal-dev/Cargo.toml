@@ -14,6 +14,7 @@ partition-plan = "unified"
 in-place-updates = false
 grub-set-private-var = true
 xfs-data-partition = true
+erofs-root-partition = true
 uefi-secure-boot = true
 systemd-networkd = true
 
@@ -28,6 +29,7 @@ included-packages = [
     "release",
     "kernel-6.1",
     "linux-firmware",
+    "whippet",
 # docker
     "docker-cli",
     "docker-engine",
