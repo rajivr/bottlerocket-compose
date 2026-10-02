@@ -8,7 +8,6 @@ build = "../build.rs"
 exclude = ["README.md"]
 
 [package.metadata.build-variant.image-features]
-in-place-updates = false
 grub-set-private-var = true
 xfs-data-partition = true
 uefi-secure-boot = true
@@ -16,6 +15,7 @@ systemd-networkd = true
 erofs-root-partition = true
 external-kmod-development = false
 encrypted-storage = true
+in-place-updates = false
 
 [package.metadata.build-variant]
 kernel-parameters = [
@@ -30,8 +30,8 @@ kernel-parameters = [
 included-packages = [
 # core
     "release",
-    "kernel-6.12",
-    "containerd-2.1",
+    "kernel-6.18",
+    "containerd-2.2",
     "systemd-257",
     "nftables",
     "whippet",

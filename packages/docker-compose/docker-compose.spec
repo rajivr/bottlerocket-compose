@@ -18,27 +18,8 @@ Source1: bundled-compose-%{gover}.tar.gz
 
 BuildRequires: git
 BuildRequires: %{_cross_os}glibc-devel
-Requires: %{name}(binaries)
 
 %description
-%{summary}.
-
-%package bin
-Summary: Docker Compose binaries
-Provides: %{name}(binaries)
-Requires: (%{_cross_os}image-feature(no-fips) and %{name})
-Conflicts: (%{_cross_os}image-feature(fips) or %{name}-fips-bin)
-
-%description bin
-%{summary}.
-
-%package fips-bin
-Summary: Docker Compose binaries, FIPS edition
-Provides: %{name}(binaries)
-Requires: (%{_cross_os}image-feature(fips) and %{name})
-Conflicts: (%{_cross_os}image-feature(no-fips) or %{name}-bin)
-
-%description fips-bin
 %{summary}.
 
 %prep
@@ -59,23 +40,14 @@ export GO_MAJOR="1.25"
 go mod edit -go 1.25.3
 
 go build -ldflags="${GOLDFLAGS} ${LD_VERSION}" -o docker-compose ./cmd
-gofips build -ldflags="${GOLDFLAGS} ${LD_VERSION}" -o fips/docker-compose ./cmd
 
 %install
 install -d %{buildroot}%{_cross_bindir}
 install -p -m 0755 docker-compose %{buildroot}%{_cross_bindir}
 
-install -d %{buildroot}%{_cross_fips_bindir}
-install -p -m 0755 fips/docker-compose %{buildroot}%{_cross_fips_bindir}
-
 %files
 %license LICENSE NOTICE
 %{_cross_attribution_file}
-
-%files bin
 %{_cross_bindir}/docker-compose
-
-%files fips-bin
-%{_cross_fips_bindir}/docker-compose
 
 %changelog
