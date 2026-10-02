@@ -11,12 +11,12 @@ exclude = ["README.md"]
 partition-plan = "unified"
 
 [package.metadata.build-variant.image-features]
-in-place-updates = false
 grub-set-private-var = true
 xfs-data-partition = true
 erofs-root-partition = true
 uefi-secure-boot = true
 systemd-networkd = true
+in-place-updates = false
 
 [package.metadata.build-variant]
 image-format = "raw"

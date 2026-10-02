@@ -40,32 +40,6 @@ affected-services = ["containerd"]
 configuration-files = ["proxy-env"]
 restart-commands = ["/bin/systemctl try-restart host-containerd.service"]
 
-# Updates.
-
-[settings.updates]
-version-lock = "latest"
-ignore-waves = false
-
-[services.thar-be-updates]
-configuration-files = ["thar-be-updates-toml"]
-restart-commands = []
-
-[services.updog]
-configuration-files = ["updog-toml"]
-restart-commands = []
-
-[configuration-files.thar-be-updates-toml]
-path = "/etc/thar-be-updates.toml"
-template-path = "/usr/share/templates/thar-be-updates-toml"
-
-[configuration-files.updog-toml]
-path = "/etc/updog.toml"
-template-path = "/usr/share/templates/updog-toml"
-
-[metadata.settings.updates]
-affected-services = ["updog", "thar-be-updates"]
-seed.setting-generator = "bork seed"
-
 # HostContainers
 
 [services.host-containers]
@@ -90,7 +64,7 @@ path = "/etc/network/proxy.env"
 template-path = "/usr/share/templates/proxy-env"
 
 [metadata.settings.network]
-affected-services = ["containerd", "host-containerd", "host-containers", "updog"]
+affected-services = ["containerd", "host-containerd", "host-containers"]
 
 [metadata.settings.network.hostname]
 affected-services = ["hostname", "hosts"]
@@ -163,6 +137,13 @@ restart-commands = ["/usr/bin/corndog lockdown"]
 [metadata.settings.kernel.lockdown]
 affected-services = ["lockdown"]
 
+[services.hugepages]
+configuration-files = ["corndog-toml"]
+restart-commands = []
+
+[metadata.settings.kernel.hugepages]
+affected-services = ["hugepages"]
+
 [configuration-files.corndog-toml]
 path = "/etc/corndog.toml"
 template-path = "/usr/share/templates/corndog-toml"
@@ -213,3 +194,12 @@ template-path = "/usr/share/templates/netdog-toml"
 [configuration-files.certdog-toml]
 path = "/etc/certdog.toml"
 template-path = "/usr/share/templates/certdog-toml"
+
+# thar-be-registries - renders hosts.toml files for containerd registry config
+[services.thar-be-registries]
+configuration-files = ["thar-be-registries-toml"]
+restart-commands = ["/usr/bin/thar-be-registries"]
+
+[configuration-files.thar-be-registries-toml]
+path = "/etc/containerd/thar-be-registries.toml"
+template-path = "/usr/share/templates/thar-be-registries-toml"

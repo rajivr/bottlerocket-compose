@@ -10,7 +10,8 @@ strength = "weak"
 setting-generator = "shibaken generate-admin-userdata"
 
 [settings.host-containers.control]
-enabled = true
+enabled = false
+user-data = "eyJpbnNwZWN0b3IiOiB7InVwbG9hZC1zYm9tIjogZmFsc2V9fQ=="
 superpowered = false
 
 [metadata.settings.host-containers.control.source.setting-generator]
