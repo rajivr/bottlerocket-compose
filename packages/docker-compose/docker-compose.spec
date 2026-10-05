@@ -2,7 +2,7 @@
 %global gorepo compose
 %global goimport %{goproject}/%{gorepo}
 
-%global gover 2.40.3
+%global gover 5.6.0
 %global rpmver %{gover}
 
 %global _dwz_low_mem_die_limit 0
@@ -29,15 +29,15 @@ BuildRequires: %{_cross_os}glibc-devel
 %build
 %set_cross_go_flags
 
-LD_VERSION="-X github.com/docker/compose/v2/internal.Version=%{gover}"
+LD_VERSION="-X github.com/docker/compose/v5/internal.Version=%{gover}"
 
 export GOTOOLCHAIN=local
-export GO_MAJOR="1.25"
+export GO_MAJOR="1.26"
 
-# bottlerocket-sdk v0.65.1 has GO version 1.25.3
-# https://github.com/bottlerocket-os/bottlerocket-sdk/blob/v0.65.1/Dockerfile#L498
+# bottlerocket-sdk v0.79.0 has GO version 1.26.8
+# https://github.com/bottlerocket-os/bottlerocket-sdk/blob/v0.79.0/Dockerfile#L514
 
-go mod edit -go 1.25.3
+go mod edit -go 1.26.8
 
 go build -ldflags="${GOLDFLAGS} ${LD_VERSION}" -o docker-compose ./cmd
 
